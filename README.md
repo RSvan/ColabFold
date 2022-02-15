@@ -1,6 +1,9 @@
 # ColabFold
 <p align="center"><img src="https://github.com/sokrypton/ColabFold/raw/main/.github/ColabFold_Marv_Logo.png" height="250"/></p>
 
+RAS: This was forked on 12/2021 (Not updated)
+Changes have been made to batch.py to include random number generator for each run.
+
 -----------------
 **New Updates**
 ```diff
