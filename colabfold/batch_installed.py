@@ -158,6 +158,7 @@ def predict_structure(
     model_runner_and_params: List[Tuple[str, model.RunModel, haiku.Params]],
     do_relax: bool = False,
     rank_by: str = "auto",
+    random_seed: int = 0,
     stop_at_score: float = 100,
     prediction_callback: Callable[[Any, Any, Any, Any], Any] = None,
 ):
@@ -166,8 +167,6 @@ def predict_structure(
         # score complexes by ptmscore and sequences by plddt
         rank_by = "plddt" if not is_complex else "ptmscore"
 
-    random_seed = np.int(np.round(random.random()*32420))
-    logger.info(f"random_seed = {random_seed}")
     plddts, paes, ptmscore = [], [], []
     max_paes = []
     unrelaxed_pdb_lines = []
@@ -1263,7 +1262,7 @@ def main():
     parser.add_argument(
         "--overwrite-existing-results", default=False, action="store_true"
     )
- 
+
     args = parser.parse_args()
 
     setup_logging(Path(args.results).joinpath("log.txt"))
